@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>YouCode | Scrum Board</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN core-css ================== -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link href="assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- ================== END core-css ================== -->
+  </head>
+  <body>
+    <!-- BEGIN #app -->
+    <div id="app" class="app-without-sidebar">
+      <!-- BEGIN #content -->
+      <div id="content" class="app-content main-style">
+        <div class="d-flex align-items-center mb-3">
+          <div>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+              <li class="breadcrumb-item active">Scrum Board</li>
+            </ol>
+            <!-- BEGIN page-header -->
+            <h1 class="page-header mb-0">Scrum Board</h1>
+            <!-- END page-header -->
+          </div>
+
+          <div class="ms-auto">
+            <a
+              href="#modal-task"
+              data-bs-toggle="modal"
+              class="btn btn-success btn-rounded px-4 rounded-pill"
+              ><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add
+              Task</a
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-4 col-lg-6">
+            <div class="panel panel-inverse">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  To do (<span id="to-do-tasks-count">5</span>)
+                </h4>
+              </div>
+              <div
+                class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0"
+                id="to-do-tasks"
+              >
+                <!-- TO DO TASKS HERE -->
+
+                <div
+                  class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0"
+                >
+                  <a
+                    href="#"
+                    class="list-group-item list-group-item-action d-flex"
+                  >
+                    <div class="me-3 fs-16px">
+                      <i class="far fa-question-circle text-gray-500 fa-fw"></i>
+                    </div>
+                    <div class="flex-fill">
+                      <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
+                        Investigate adding markdownlint
+                      </div>
+                      <div class="mb-1 fs-12px">
+                        <div class="text-gray-600 flex-1">
+                          #29919 opened 9 days ago by xMediaKron
+                        </div>
+                      </div>
+                      <div class="mb-1">
+                        <span class="badge bg-gray-300 text-gray-900"
+                          >build</span
+                        >
+                        <span class="badge bg-indigo">v5</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-6">
+            <div class="panel panel-inverse">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  In Progress (<span id="in-progress-tasks-count">4</span>)
+                </h4>
+              </div>
+              <div
+                class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0"
+                id="in-progress-tasks"
+              >
+                <!-- IN PROGRESS TASKS HERE -->
+
+                <a
+                  href="#"
+                  class="list-group-item list-group-item-action d-flex"
+                >
+                  <div class="me-3 fs-16px">
+                    <i class="far fa-question-circle text-gray-500 fa-fw"></i>
+                  </div>
+                  <div class="flex-fill">
+                    <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
+                      Investigate adding markdownlint
+                    </div>
+                    <div class="mb-1 fs-12px">
+                      <div class="text-gray-600 flex-1">
+                        #29919 opened 9 days ago by xMediaKron
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <span class="badge bg-gray-300 text-gray-900">build</span>
+                      <span class="badge bg-indigo">v5</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6">
+            <div class="panel panel-inverse">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  Done (<span id="done-tasks-count">4</span>)
+                </h4>
+              </div>
+              <div
+                class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0"
+                id="done-tasks"
+              >
+                <!-- DONE TASKS HERE -->
+
+                <a
+                  href="#"
+                  class="list-group-item list-group-item-action d-flex"
+                >
+                  <div class="me-3 fs-16px">
+                    <i class="far fa-question-circle text-gray-500 fa-fw"></i>
+                  </div>
+                  <div class="flex-fill">
+                    <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
+                      Investigate adding markdownlint
+                    </div>
+                    <div class="mb-1 fs-12px">
+                      <div class="text-gray-600 flex-1">
+                        #29919 opened 9 days ago by xMediaKron
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <span class="badge bg-gray-300 text-gray-900">build</span>
+                      <span class="badge bg-indigo">v5</span>
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END #content -->
+
+      <!-- BEGIN scroll-top-btn -->
+      <a
+        href="javascript:;"
+        class="btn btn-icon btn-circle btn-success btn-scroll-to-top"
+        data-toggle="scroll-to-top"
+        ><i class="fa fa-angle-up"></i
+      ></a>
+      <!-- END scroll-top-btn -->
+    </div>
+    <!-- END #app -->
+
+    <!-- TASK MODAL -->
+    
+    <!-- ================== BEGIN core-js ================== -->
+    <script src="assets/js/script.js"></script>
+    <!-- ================== END core-js ================== -->
+  </body>
+</html>
