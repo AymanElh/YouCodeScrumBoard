@@ -8,3 +8,15 @@
     background-size: 360px;
     background-position: right bottom;
 }
+
+.show-modal {
+    min-width: 100vw;
+    display: block;
+    position: absolute;
+    top: -5px;
+    background-color: filter
+}
+
+.background-blur {
+    filter: blur(3px);
+}

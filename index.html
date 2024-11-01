@@ -38,6 +38,7 @@
 
           <div class="ms-auto">
             <a
+              id="addTaskBtn"
               href="#modal-task"
               data-bs-toggle="modal"
               class="btn btn-success btn-rounded px-4 rounded-pill"
@@ -111,7 +112,7 @@
                   class="list-group-item list-group-item-action d-flex"
                 >
                   <div class="me-3 fs-16px">
-                    <i class="far fa-question-circle text-gray-500 fa-fw"></i>
+                    <i class="fa-solid fa-circle-notch"></i>
                   </div>
                   <div class="flex-fill">
                     <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
@@ -149,7 +150,7 @@
                   class="list-group-item list-group-item-action d-flex"
                 >
                   <div class="me-3 fs-16px">
-                    <i class="far fa-question-circle text-gray-500 fa-fw"></i>
+                    <i class="fa-solid fa-circle-check"></i>
                   </div>
                   <div class="flex-fill">
                     <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
@@ -186,7 +187,77 @@
     <!-- END #app -->
 
     <!-- TASK MODAL -->
-    
+    <div class="d-none" id="modal-task">
+      <!-- Modal content goes here -->
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="scripts.php" method="POST" id="form-task">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Task</h5>
+              <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+            </div>
+            <div class="modal-body">
+                <!-- This Input Allows Storing Task Index  -->
+                <input type="hidden" id="task-id">
+                <div class="mb-3">
+                  <label class="form-label">Title</label>
+                  <input type="text" class="form-control" id="task-title"/>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Type</label>
+                  <div class="ms-3">
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" name="task-type" type="radio" value="Feature" id="task-type-feature"/>
+                      <label class="form-check-label" for="task-type-feature">Feature</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="task-type" type="radio" value="Bug" id="task-type-bug"/>
+                      <label class="form-check-label" for="task-type-bug">Bug</label>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Priority</label>
+                  <select class="form-select" id="task-priority">
+                    <option value="">Please select</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Status</label>
+                  <select class="form-select" id="task-status">
+                    <option value="">Please select</option>
+                    <option value="To Do">To Do</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Done">Done</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Date</label>
+                  <input type="date" class="form-control" id="task-date"/>
+                </div>
+                <div class="mb-0">
+                  <label class="form-label">Description</label>
+                  <textarea class="form-control" rows="10" id="task-description"></textarea>
+                </div>
+              
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+              <button type="submit" name="delete" class="btn btn-danger task-action-btn d-none" id="task-delete-btn">Delete</a>
+              <button type="submit" name="update" class="btn btn-warning task-action-btn d-none" id="task-update-btn">Update</a>
+              <button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+    </div>
+
     <!-- ================== BEGIN core-js ================== -->
     <script src="assets/js/script.js"></script>
     <!-- ================== END core-js ================== -->
