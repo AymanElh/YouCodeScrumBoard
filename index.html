@@ -187,7 +187,7 @@
     <!-- END #app -->
 
     <!-- TASK MODAL -->
-    <div class="d-none" id="modal-task">
+    <div class="modal-overlay" id="modal-task">
       <!-- Modal content goes here -->
       <div class="modal-dialog">
         <div class="modal-content">
@@ -248,8 +248,8 @@
             </div>
             <div class="modal-footer">
               <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-              <button type="submit" name="delete" class="btn btn-danger task-action-btn d-none" id="task-delete-btn">Delete</a>
-              <button type="submit" name="update" class="btn btn-warning task-action-btn d-none" id="task-update-btn">Update</a>
+              <a type="submit" name="delete" class="btn btn-danger task-action-btn d-none" id="task-delete-btn">Delete</a>
+              <button type="submit" name="update" class="btn btn-warning task-action-btn d-none" id="task-update-btn">Update</button>
               <button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
             </div>
           </form>

@@ -3,16 +3,14 @@
 // Display and Close form modal
 
 const addTaskBtn = document.getElementById("addTaskBtn");
-const formModal = document.getElementById("modal-task");
-const app = document.getElementById("app")
-addTaskBtn.addEventListener("click", () => {
-  formModal.classList.replace("d-none", "show-modal");
-  app.classList.add("background-blur");
-})
-
+const modalTask = document.getElementById("modal-task");
+const app = document.getElementById("app");
 const closeBtn = document.querySelector(".btn-close");
 
+addTaskBtn.addEventListener("click", () => {
+  modalTask.style.display = "flex";
+})
+
 closeBtn.addEventListener("click", () => {
-  formModal.classList.replace("show-modal", "d-none");
-  app.classList.remove("background-blur");
+  modalTask.style.display = "none";
 })
