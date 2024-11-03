@@ -71,12 +71,7 @@ function addTask() {
   }
 
   // reset inputs 
-  taskTitle.value = "";
-  taskType.checked = false;
-  taskPriority.value = "";
-  taskStatus.value = "";
-  taskDate.value = "";
-  taskDescription.value = "";
+  resetModal();
 
   addToHtml(newTask);
   hideModal();
@@ -139,6 +134,17 @@ function addToHtml(task) {
 
 }
 
+// Reset Modal 
+function resetModal() {
+  document.getElementById("task-title").value = "";
+  document.querySelector("input[name='task-type']:checked").checked = false;
+  document.getElementById("task-priority").value = "";
+  document.getElementById("task-status").value = "";
+  document.getElementById("task-date").value = "";
+  document.getElementById("task-description").value = "";
+}
+
+
 saveBtn.addEventListener("click", event => {
   event.preventDefault();
   addTask();
@@ -178,7 +184,7 @@ function updateTask(task) {
 
   // Get the elements on the modal
   document.getElementById("task-title").value = task.title;
-  document.querySelector(`input[name="task-type"][value="${task.type}"]`).chechek = true;
+  document.querySelector(`input[name="task-type"][value="${task.type}"]`).checked = true;
   document.getElementById("task-priority").value = task.priority;
   document.getElementById("task-status").value = task.status;
   document.getElementById("task-date").value = task.date;
@@ -224,6 +230,17 @@ function updateTask(task) {
     updateTaskToHtml();
 
     hideModal();
+
+
+    const saveBtn = document.getElementById("task-save-btn");
+    saveBtn.textContent = "Add Task";
+    saveBtn.classList.replace("btn-warning", "btn-primary");
+  
+    // Remove the update-specific event listener
+    saveBtn.removeEventListener("click", saveUpdatedTask);
+    document.querySelector(".modal-title").textContent = "Add Task"
+    resetModal();
+
     Swal.fire ({
       title: "Task updated",
       icon: "success"
