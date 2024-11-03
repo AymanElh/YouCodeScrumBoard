@@ -19,6 +19,7 @@
     <link href="assets/css/default/app.min.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- ================== END core-css ================== -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <!-- BEGIN #app -->
@@ -53,7 +54,7 @@
             <div class="panel panel-inverse">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  To do (<span id="to-do-tasks-count">5</span>)
+                  To do (<span id="to-do-tasks-count">0</span>)
                 </h4>
               </div>
               <div
@@ -61,35 +62,6 @@
                 id="to-do-tasks"
               >
                 <!-- TO DO TASKS HERE -->
-
-                <div
-                  class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0"
-                >
-                  <a
-                    href="#"
-                    class="list-group-item list-group-item-action d-flex"
-                  >
-                    <div class="me-3 fs-16px">
-                      <i class="far fa-question-circle text-gray-500 fa-fw"></i>
-                    </div>
-                    <div class="flex-fill">
-                      <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
-                        Investigate adding markdownlint
-                      </div>
-                      <div class="mb-1 fs-12px">
-                        <div class="text-gray-600 flex-1">
-                          #29919 opened 9 days ago by xMediaKron
-                        </div>
-                      </div>
-                      <div class="mb-1">
-                        <span class="badge bg-gray-300 text-gray-900"
-                          >build</span
-                        >
-                        <span class="badge bg-indigo">v5</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -98,7 +70,7 @@
             <div class="panel panel-inverse">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  In Progress (<span id="in-progress-tasks-count">4</span>)
+                  In Progress (<span id="in-progress-tasks-count">0</span>)
                 </h4>
               </div>
               <div
@@ -106,29 +78,6 @@
                 id="in-progress-tasks"
               >
                 <!-- IN PROGRESS TASKS HERE -->
-
-                <a
-                  href="#"
-                  class="list-group-item list-group-item-action d-flex"
-                >
-                  <div class="me-3 fs-16px">
-                    <i class="fa-solid fa-circle-notch"></i>
-                  </div>
-                  <div class="flex-fill">
-                    <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
-                      Investigate adding markdownlint
-                    </div>
-                    <div class="mb-1 fs-12px">
-                      <div class="text-gray-600 flex-1">
-                        #29919 opened 9 days ago by xMediaKron
-                      </div>
-                    </div>
-                    <div class="mb-1">
-                      <span class="badge bg-gray-300 text-gray-900">build</span>
-                      <span class="badge bg-indigo">v5</span>
-                    </div>
-                  </div>
-                </a>
               </div>
             </div>
           </div>
@@ -136,7 +85,7 @@
             <div class="panel panel-inverse">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  Done (<span id="done-tasks-count">4</span>)
+                  Done (<span id="done-tasks-count">0</span>)
                 </h4>
               </div>
               <div
@@ -144,29 +93,6 @@
                 id="done-tasks"
               >
                 <!-- DONE TASKS HERE -->
-
-                <a
-                  href="#"
-                  class="list-group-item list-group-item-action d-flex"
-                >
-                  <div class="me-3 fs-16px">
-                    <i class="fa-solid fa-circle-check"></i>
-                  </div>
-                  <div class="flex-fill">
-                    <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
-                      Investigate adding markdownlint
-                    </div>
-                    <div class="mb-1 fs-12px">
-                      <div class="text-gray-600 flex-1">
-                        #29919 opened 9 days ago by xMediaKron
-                      </div>
-                    </div>
-                    <div class="mb-1">
-                      <span class="badge bg-gray-300 text-gray-900">build</span>
-                      <span class="badge bg-indigo">v5</span>
-                    </div>
-                  </div>
-                </a>
 
               </div>
             </div>
@@ -187,11 +113,11 @@
     <!-- END #app -->
 
     <!-- TASK MODAL -->
-    <div class="modal-overlay" id="modal-task">
+    <div class="modal-overlay d-none" id="modal-task">
       <!-- Modal content goes here -->
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="scripts.php" method="POST" id="form-task">
+          <form id="form-task">
             <div class="modal-header">
               <h5 class="modal-title">Add Task</h5>
               <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
