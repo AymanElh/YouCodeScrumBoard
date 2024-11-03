@@ -93,8 +93,9 @@ function addToHtml(task) {
 
   const taskItem = document.createElement("a");
   taskItem.classList.add("list-group-item", "list-group-item-action", "d-flex");
-
-  console.log(task.type);
+  taskItem.style.cursor = "pointer";
+  // set the attribute on click for task so can read them when click
+  taskItem.setAttribute("onclick", `showTaskInfos(${task.id})`)
 
   function minimizeText(text, max) {
     if(text.length > max) {
@@ -142,3 +143,24 @@ saveBtn.addEventListener("click", event => {
   event.preventDefault();
   addTask();
 });
+
+
+// Show task informations
+
+function showTaskInfos(id) {
+  
+  let task = toDoTaskArr.concat(doingTaskArr, doneTaskArr).find(t => t.id === id);
+
+  document.getElementById("show-task-title").textContent = task.title;
+  document.getElementById("show-task-date").textContent = task.date;
+  document.getElementById("show-task-type").textContent = task.type;
+  document.getElementById("show-task-feature").textContent = task.feature;
+  document.getElementById("show-task-priority").textContent = task.priority;
+  document.getElementById("show-task-description").textContent = task.description;
+
+  document.querySelector(".show-modal-overlay").classList.remove("d-none");
+
+  document.getElementById("close-btn-2").addEventListener("click", () => {
+    document.querySelector(".show-modal-overlay").classList.add("d-none");
+  });
+}
