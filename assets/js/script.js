@@ -164,7 +164,8 @@ function showTaskInfos(id) {
     document.querySelector(".show-modal-overlay").classList.add("d-none");
   });
 
-  document.getElementById("task-update-btn").addEventListener("click", () => {updateTask(task)})
+  document.getElementById("task-update-btn").addEventListener("click", () => {updateTask(task)});
+  document.getElementById("task-delete-btn").addEventListener("click", () => deleteTask(task));
 }
 
 
@@ -216,9 +217,9 @@ function updateTask(task) {
       updateTaskArr(task, doneTaskArr);
     }
 
-    console.log(toDoTaskArr);
-    console.log(doingTaskArr);
-    console.log(doneTaskArr);
+    // console.log(toDoTaskArr);
+    // console.log(doingTaskArr);
+    // console.log(doneTaskArr);
 
     updateTaskToHtml();
 
@@ -251,8 +252,45 @@ function updateTaskToHtml() {
   doneTaskArr.forEach(task => addToHtml(task));
 
   // update counters
-  document.getElementById("to-do-tasks-count").value = toDoTaskArr.length;
-  document.getElementById("in-progress-tasks-count").value = doingTaskArr.length;
-  document.getElementById("done-tasks-count").value = doneTaskArr.length;
+  document.getElementById("to-do-tasks-count").textContent = toDoTaskArr.length;
+  document.getElementById("in-progress-tasks-count").textContent = doingTaskArr.length;
+  document.getElementById("done-tasks-count").textContent = doneTaskArr.length;
 
 }
+
+// Delete a Task function
+
+function deleteTask(task) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+        document.querySelector(".show-modal-overlay").classList.add("d-none")
+        // check the status
+        if(task.status === "To Do") {
+          toDoTaskArr = toDoTaskArr.filter(t => t.id !== task.id);
+        }
+        else if (task.status  === "In Progress") {
+          doingTaskArr = doingTaskArr.filter(t => t.id !== task.id);
+        }
+        else if (task.status === "Done") {
+          doneTaskArr = doneTaskArr.filter(t => t.id !== task.id);
+        }
+
+        updateTaskToHtml();
+        // console.log(toDoTaskArr, doingTaskArr, doneTaskArr);
+
+        Swal.fire(
+            'Deleted!',
+            'Your task has been deleted.',
+            'success'
+        );
+    }
+});
+} 
