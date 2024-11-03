@@ -163,4 +163,96 @@ function showTaskInfos(id) {
   document.getElementById("close-btn-2").addEventListener("click", () => {
     document.querySelector(".show-modal-overlay").classList.add("d-none");
   });
+
+  document.getElementById("task-update-btn").addEventListener("click", () => {updateTask(task)})
+}
+
+
+// Update task
+
+
+function updateTask(task) {
+
+  document.querySelector(".show-modal-overlay").classList.add("d-none");
+
+  // Get the elements on the modal
+  document.getElementById("task-title").value = task.title;
+  document.querySelector(`input[name="task-type"][value="${task.type}"]`).chechek = true;
+  document.getElementById("task-priority").value = task.priority;
+  document.getElementById("task-status").value = task.status;
+  document.getElementById("task-date").value = task.date;
+  document.getElementById("task-description").value = task.description;
+
+  const saveBtn = document.getElementById("task-save-btn");
+  saveBtn.classList.replace("btn-primary", "btn-warning");
+  saveBtn.textContent = "Save Changes";
+  document.querySelector(".modal-title").textContent = "Update Task"
+
+
+  showModal();
+  saveBtn.replaceWith(saveBtn.cloneNode(true));
+  const newSaveBtn = document.getElementById("task-save-btn");
+  newSaveBtn.addEventListener("click", saveUpdatedTask);
+
+  
+
+  function saveUpdatedTask() {
+
+    task.title = document.getElementById("task-title").value;
+    task.type = document.querySelector("input[name='task-type']:checked").value;
+    task.priority = document.getElementById("task-priority").value;
+    task.status = document.getElementById("task-status").value;
+    task.date = document.getElementById("task-date").value;
+    task.description = document.getElementById("task-description").value;
+
+    // Upload the task on its array;
+    if (task.status === "To Do") {
+      updateTaskArr(task, toDoTaskArr);
+    }
+    else if (task.status === "In Progress") {
+      updateTaskArr(task, doingTaskArr);
+    }
+    else if (task.status === "Done") {
+      updateTaskArr(task, doneTaskArr);
+    }
+
+    console.log(toDoTaskArr);
+    console.log(doingTaskArr);
+    console.log(doneTaskArr);
+
+    updateTaskToHtml();
+
+    hideModal();
+    Swal.fire ({
+      title: "Task updated",
+      icon: "success"
+    })
+
+  }
+}
+
+
+function updateTaskArr(task, arr) {
+  const idx = arr.findIndex(t => t.id === task.id);
+  if (idx !== -1) {
+    arr[idx] = task;
+  }
+
+  
+}
+
+function updateTaskToHtml() {
+  document.getElementById("to-do-tasks").innerHTML = "";
+  document.getElementById("in-progress-tasks").innerHTML = "";
+  document.getElementById("done-tasks").innerHTML = "";
+
+  toDoTaskArr.forEach(task => addToHtml(task));
+  doingTaskArr.forEach(task => addToHtml(task));
+  doneTaskArr.forEach(task => addToHtml(task));
+
+  // update counters
+  document.getElementById("to-do-tasks-count").value = toDoTaskArr.length;
+  document.getElementById("in-progress-tasks-count").value = doingTaskArr.length;
+  document.getElementById("done-tasks-count").value = doneTaskArr.length;
+
 }
