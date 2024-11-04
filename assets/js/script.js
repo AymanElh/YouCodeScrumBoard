@@ -232,9 +232,9 @@ function updateTask(task) {
       updateTaskArr(task, doneTaskArr);
     }
 
-    // console.log(toDoTaskArr);
-    // console.log(doingTaskArr);
-    // console.log(doneTaskArr);
+    console.log(toDoTaskArr);
+    console.log(doingTaskArr);
+    console.log(doneTaskArr);
 
     updateTaskToHtml();
 
@@ -261,8 +261,44 @@ function updateTask(task) {
 
 function updateTaskArr(task, arr) {
   const idx = arr.findIndex(t => t.id === task.id);
+  console.log(idx);
   if (idx !== -1) {
     arr[idx] = task;
+  }
+  else {
+    if(task.status === "To Do") {
+      var index = doingTaskArr.findIndex(t => t.id === task.id);
+      if(index != -1) {
+        doingTaskArr.splice(index, 1);
+      }
+      var index = doneTaskArr.findIndex(t => t.id === task.id);
+      if (index != -1){
+        doneTaskArr.splice(index, 1);
+      }
+      toDoTaskArr.push(task);
+    }
+    else if(task.status === "In Progress") {
+      var index = toDoTaskArr.findIndex(t => t.id === task.id);
+      if(index != -1) {
+        toDoTaskArr.splice(index, 1);
+      }
+      var index = doneTaskArr.findIndex(t => t.id === task.id);
+      if (index != -1){
+        doneTaskArr.splice(index, 1);
+      }
+      doingTaskArr.push(task);
+    }
+    else if (task.status === "Done") {
+      var index = doingTaskArr.findIndex(t => t.id === task.id);
+      if(index != -1) {
+        doingTaskArr.splice(index, 1);
+      }
+      var index = toDoTaskArr.findIndex(t => t.id === task.id);
+      if (index != -1){
+        toDoTaskArr.splice(index, 1);
+      }
+      doneTaskArr.push(task);
+    }
   }
 
   addToLocalStorage();
