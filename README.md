@@ -43,6 +43,10 @@ The goals of this project are to:
 
 ## Installation 
 
+To access to the project, visit the following link: **[YouCodeScrumBoard](https://aymanelh.github.io/YouCodeScrumBoard/)**
+
+Run the project locally: 
+
 1. **Clone the reporsitory**:
     ```bash
       git clone https://github.com/AymanElh/YouCodeScrumBoard.git
@@ -50,7 +54,7 @@ The goals of this project are to:
 
 2. **Navigate to the project directory**:
     ```bash
-    cd YouCodeScrumBoard
+    cd ./your_directory/YouCodeScrumBoard
     ```
 
 3. **Open `index.html` in your browser** to start using the app locally.
@@ -72,4 +76,14 @@ The goals of this project are to:
 
 ![Alt text](./Design/desktop-preview.png "")
 
-![Alt text](./Design/phone-preview.png "a title")
+---
+
+### Mobile preview
+
+![Alt text](./Design/phone-preview.png "")
+
+---
+
+### Modal Preview
+
+![Alt text](./Design/modal-preview.png)
