@@ -24,9 +24,9 @@ window.addEventListener("click", (event) => {
 
 // Function to add tasks
 
-let toDoTaskArr = [];
-let doingTaskArr = [];
-let doneTaskArr = [];
+let toDoTaskArr = JSON.parse(localStorage.getItem("toDoTaskArr")) || [];
+let doingTaskArr = JSON.parse(localStorage.getItem("doingTaskArr")) || [];
+let doneTaskArr = JSON.parse(localStorage.getItem("doneTaskArr")) || [];
 
 const saveBtn = document.getElementById("task-save-btn");
 
@@ -75,11 +75,20 @@ function addTask() {
 
   addToHtml(newTask);
   hideModal();
+
+  addToLocalStorage();
+
   Swal.fire({
     title: "Task Added",
     icon: "success"
   })
 
+}
+
+function addToLocalStorage() {
+  window.localStorage.setItem("toDoTaskArr", JSON.stringify(toDoTaskArr));
+  window.localStorage.setItem("doingTaskArr", JSON.stringify(doingTaskArr));
+  window.localStorage.setItem("doneTaskArr", JSON.stringify(doneTaskArr));
 }
 
 // Function add the element to html
@@ -256,6 +265,7 @@ function updateTaskArr(task, arr) {
     arr[idx] = task;
   }
 
+  addToLocalStorage();
   
 }
 
@@ -301,6 +311,7 @@ function deleteTask(task) {
         }
 
         updateTaskToHtml();
+        addToLocalStorage();
         // console.log(toDoTaskArr, doingTaskArr, doneTaskArr);
 
         Swal.fire(
@@ -311,3 +322,10 @@ function deleteTask(task) {
     }
 });
 } 
+
+
+window.onload = function () {
+  toDoTaskArr.forEach(task => addToHtml(task));
+  doingTaskArr.forEach(task => addToHtml(task));
+  doneTaskArr.forEach(task => addToHtml(task));
+}
