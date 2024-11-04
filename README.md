@@ -74,16 +74,16 @@ Run the project locally:
 
 ### Desktop preview
 
-![Alt text](./Design/desktop-preview.png "")
+![Alt text](./Design/desktop-preview.png "desktop-preview")
 
 ---
 
 ### Mobile preview
 
-![Alt text](./Design/phone-preview.png "")
+![Alt text](./Design/phone-preview.png "mobile-preview")
 
 ---
 
 ### Modal Preview
 
-![Alt text](./Design/modal-preview.png)
+![Alt text](./Design/modal-preview.png "modal-preview")
