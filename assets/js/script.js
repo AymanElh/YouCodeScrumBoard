@@ -108,20 +108,25 @@ function addToHtml(task) {
     return text;
   }
 
+  let icon;
+
   // increment the number of tasks on the html
   if(task.status === "To Do") {
     document.getElementById("to-do-tasks-count").textContent = toDoTaskArr.length
+    icon = "todo.png";
   }
   else if (task.status === "In Progress") {
     document.getElementById("in-progress-tasks-count").textContent = doingTaskArr.length;
+    icon = "in-progress.png"
   }
   else if (task.status === "Done") {
     document.getElementById("done-tasks-count").textContent = doneTaskArr.length;
+    icon = "done.png"
   }
 
   taskItem.innerHTML = `
     <div class="me-3 fs-16px">
-      
+      <img src="./assets/img/icons/${icon}" style="widht: 40px; height: 40px; margin-top: 8px;">
     </div>
     <div class="flex-fill">
       <div class="fs-14px lh-12 mb-2px fw-bold text-dark">
