@@ -40,10 +40,20 @@ function addTask() {
   const taskDescription = document.getElementById("task-description");
 
   // check the inputs 
-  if(!taskTitle.value || !taskType.value || !taskPriority.value || !taskStatus.value || !taskDate.value || !taskDescription.value) {
+  if(!taskTitle.value || !taskType || !taskPriority.value || !taskStatus.value || !taskDate.value || !taskDescription.value) {
     Swal.fire({
       title: 'Error!',
       text: 'Please fill all inputs.',
+      icon: 'error',
+      confirmButtonText: 'Try Again'
+    });
+    return;
+  }
+
+  if(new Date(taskDate.value) < Date.now()) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Date is not valid, please enter a date greater that today',
       icon: 'error',
       confirmButtonText: 'Try Again'
     });
